@@ -8,12 +8,35 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    private let orderButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setTitle("Make to order", for: .normal)
+        btn.backgroundColor = .darkGray
+        btn.layer.cornerRadius = 10
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        setupView()
+        setConstraints()
     }
 
-
+    private func setupView() {
+        
+    }
 }
 
+extension ViewController {
+    
+    private func setConstraints() {
+        
+        NSLayoutConstraint.activate([
+        
+            
+        ])
+    }
+}
