@@ -51,12 +51,19 @@ extension PopOverCollectionView: UICollectionViewDataSource, UICollectionViewDel
         
         let iconName = cellConfigureArray[1][indexPath.row]
         let text = cellConfigureArray[0][indexPath.row]
-        cell
+        cell.configureCell(iconName: iconName, text: text)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         mainCellDelegate?.selectItem(indexPath: indexPath)
+        
+        switch cellConfigureArray[0][indexPath.row] {
+        case "Like": print("fffff")
+        case "Subscrime": print("gog")
+        case "Contacts": print("deeeee")
+        default: break
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

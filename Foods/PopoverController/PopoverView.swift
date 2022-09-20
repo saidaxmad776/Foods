@@ -31,7 +31,10 @@ extension PopoverView {
         
         NSLayoutConstraint.activate([
         
-            
+            popOverCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            popOverCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 1),
+            popOverCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -1),
+            popOverCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
         ])
     }
 }

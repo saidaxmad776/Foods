@@ -35,7 +35,7 @@ class PopoverController: UIViewController {
         button.setTitle("?", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
         button.backgroundColor = .darkGray
-        button.layer.cornerRadius = 35
+        button.layer.cornerRadius = 25
         button.addTarget(self, action: #selector(tapButtonAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -58,6 +58,33 @@ class PopoverController: UIViewController {
     
     @objc private func tapButtonAction() {
         
+        if view.alpha == 1 {
+            view.alpha = 0.5
+        } else {
+            view.alpha = 1
+        }
+        
+        let popoverViewController = PopoverView()
+        popoverViewController.modalPresentationStyle = .popover
+        popoverViewController.preferredContentSize = CGSize(width: 130, height: 150)
+        
+        guard let presetionVc = popoverViewController.popoverPresentationController else { return }
+        presetionVc.delegate = self
+        presetionVc.sourceView = tapButton
+        presetionVc.permittedArrowDirections = .down
+        presetionVc.sourceRect = CGRect(x: tapButton.bounds.midX, y: tapButton.bounds.maxY - 45, width: 0, height: 0)
+        
+        presetionVc.passthroughViews = [tapButton]
+        
+        if tapButton.titleLabel?.text == "?" {
+            tapButton.setTitle("X", for: .normal)
+            present(popoverViewController, animated: true)
+        } else {
+            tapButton.setTitle("?", for: .normal)
+            presentedViewController?.dismiss(animated: true)
+        }
+            
+        
     }
     
     private func setConstraints() {
@@ -71,10 +98,21 @@ class PopoverController: UIViewController {
             
             tapButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             tapButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -60),
-            tapButton.heightAnchor.constraint(equalToConstant: 70),
-            tapButton.widthAnchor.constraint(equalToConstant: 70),
+            tapButton.heightAnchor.constraint(equalToConstant: 50),
+            tapButton.widthAnchor.constraint(equalToConstant: 50),
+            
         ])
     }
 }
 
+extension PopoverController: UIPopoverPresentationControllerDelegate {
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        .none
+    }
+    
+    func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
+        false
+    }
+}
 
