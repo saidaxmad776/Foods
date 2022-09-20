@@ -12,10 +12,14 @@ class SaleCollectionViewCell: UICollectionViewCell {
     
     private let saleImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 15
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+    
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,7 +34,6 @@ class SaleCollectionViewCell: UICollectionViewCell {
     
     func setupView() {
         
-        backgroundColor = .white
         addSubview(saleImageView)
     }
     

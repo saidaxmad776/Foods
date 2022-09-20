@@ -27,7 +27,7 @@ enum ListSection {
     var title: String {
         switch self {
         case .sales(_):
-            return ""
+            return "Menu"
         case .category(_):
             return "Category"
         case .example(_):

@@ -11,7 +11,9 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     private let categoryImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
+        imageView.layer.cornerRadius = 10
+        imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -29,7 +31,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                layer.borderWidth = 2
+                layer.borderWidth = 3
                 layer.borderColor = UIColor.red.cgColor
             } else {
                 layer.borderWidth = 0
@@ -65,14 +67,14 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             
-            categoryLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            categoryLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
             categoryLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
             categoryLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
             categoryLabel.heightAnchor.constraint(equalToConstant: 16),
         
-            categoryImageView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
-            categoryImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
-            categoryImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
+            categoryImageView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+            categoryImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            categoryImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             categoryImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
         ])
     }

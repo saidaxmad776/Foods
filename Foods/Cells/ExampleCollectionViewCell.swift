@@ -11,15 +11,15 @@ class ExampleCollectionViewCell: UICollectionViewCell {
     
     private let burgerImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private let backgroundTitleView: UIImageView = {
         let view = UIImageView()
-        view.backgroundColor = .white
-        view.alpha = 0.6
+        view.backgroundColor = .black
+        view.alpha = 0.5
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
