@@ -72,6 +72,7 @@ extension ContextMenuVC: UIContextMenuInteractionDelegate {
             let contact = UIAction(title: "contact", image: UIImage(systemName: "person")) { _ in
                 print("contact")
             }
+            print(contact)
             
             let delete = UIAction(title: "delete", image: UIImage(systemName: "person"), attributes: .destructive) { _ in
                 print("delete")
