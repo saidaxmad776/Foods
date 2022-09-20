@@ -19,6 +19,8 @@ class ContextMenuVC: UIViewController {
         return imageView
     }()
     
+    let listAction = ["Instagram", "Telegram", "LinkeDin"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,11 +73,19 @@ extension ContextMenuVC: UIContextMenuInteractionDelegate {
                 print("contact")
             }
             
-            let delete = UIAction(title: "delete", image: UIImage(systemName: "person")) { _ in
+            let delete = UIAction(title: "delete", image: UIImage(systemName: "person"), attributes: .destructive) { _ in
                 print("delete")
             }
             
-            return UIMenu(title: "Contect Menu", children: [like, subscrime, contact, delete])
+            let listAction = self.listAction.map {
+                UIAction(title: "Call to \($0)") { _ in
+                    print("Call")
+                }
+            }
+            
+            let contactMenu = UIMenu(title: "Contact", children: listAction)
+            
+            return UIMenu(title: "Contect Menu", children: [like, subscrime, contactMenu, delete])
         }
     }
     
